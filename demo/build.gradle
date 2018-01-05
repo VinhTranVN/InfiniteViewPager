@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
-        targetSdkVersion 19
-        minSdkVersion 8
-        versionName project.VERSION_NAME
-        versionCode Integer.parseInt(project.VERSION_CODE)
+        targetSdkVersion 15
+        minSdkVersion 16
+        versionName "1"
+        versionCode 1
     }
 
     compileOptions {
@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
     compile project(':library')
 }

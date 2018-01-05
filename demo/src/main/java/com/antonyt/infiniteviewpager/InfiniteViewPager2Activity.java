@@ -14,15 +14,15 @@ import android.support.v4.view.ViewPager;
  */
 public class InfiniteViewPager2Activity extends FragmentActivity {
 
+    int[] colours = new int[]{Color.CYAN, Color.MAGENTA, Color.RED, Color.WHITE, Color.YELLOW};
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
         FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            int[] colours = new int[]{Color.CYAN, Color.MAGENTA};
 
-            @Override
             public int getCount() {
                 return colours.length;
             }
@@ -49,6 +49,25 @@ public class InfiniteViewPager2Activity extends FragmentActivity {
         // actually an InfiniteViewPager
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(wrappedAdapter);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                System.out.println(">>> InfiniteViewPager2Activity -> onPageSelected : " + position);
+                System.out.println(">>> InfiniteViewPager2Activity -> onPageSelected : real " + position % colours.length);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 }
